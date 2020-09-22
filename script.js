@@ -13,6 +13,7 @@ function writePassword() {
 function generatePassword(){
   var userApproval = confirm("Please confirm the criteria for this password");
   var characterLength = prompt("How long would you like your password to be?");
+    console.log("Chosen character length: " + characterLength);
 
   if(characterLength < 8 ){
     alert("Needs to be more than 8 characters!")
