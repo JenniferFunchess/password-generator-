@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
 var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var specialCharacters = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
@@ -30,6 +31,8 @@ function generatePassword(){
   var userLowerCase = confirm("Would you like your password to contain Lower Case Letters?");
   var userSpecialCharacter = confirm("Would you like your password to contain Special Characters?");
   var userNumbers = confirm("Would you like your password to contain Numbers?");
+    if(userUpperCase === false && userLowerCase === false && userSpecialCharacter === false && userNumbers === false) {
+      alert("You must choose at least one parameter");}
 
   return "this will be replaced by my generated password.";
 }
