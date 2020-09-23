@@ -81,7 +81,7 @@ function generatePassword(){
 
   for (let i = 0; i < options.length; ++i) {
       var randomPicker = Math.floor(Math.random() * Math.floor(passwordPool.length));
-       finalPassword.push(passwordPool[randomPicker])
+       chosenAnswers.push(passwordPool[randomPicker])
   }
 
   console.log(finalPassword)
