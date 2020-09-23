@@ -15,16 +15,19 @@ function writePassword() {
 
 }
 
+
 function generatePassword(){
   var userApproval = confirm("Please confirm the criteria for this password");
-  var characterLength = prompt("How long would you like your password to be?");
+  var characterLength = parseInt(prompt("How long would you like your password to be?"));
     console.log("Chosen character length: " + characterLength);
 
   if(characterLength < 8 ){
-    alert("Needs to be more than 8 characters!")
+    alert("Needs to be 8 or more characters!");
+    return;
   }
   else if (characterLength > 128){
-    alert ("Needs to be under 128 characters!")
+    alert ("Needs to be 128 or less characters!");
+    return;
   }
  
   var userUpperCase = confirm("Would you like your password to contain Upper Case Letters?");
@@ -32,10 +35,59 @@ function generatePassword(){
   var userSpecialCharacter = confirm("Would you like your password to contain Special Characters?");
   var userNumbers = confirm("Would you like your password to contain Numbers?");
     if(userUpperCase === false && userLowerCase === false && userSpecialCharacter === false && userNumbers === false) {
-      alert("You must choose at least one parameter");}
+      alert("You must choose at least one parameter");
+      return;
+    };
 
+   var userChoices = { 
+     lengthChoice: characterLength,
+     specialCharacterChoice: userSpecialCharacter,
+     numberChoice: userNumbers,
+     lowerCaseChoice: userLowerCase,
+      upperCaseChoice:  userUpperCase
+  } ;
+
+  return userChoices;
+}
+
+
+  function randomGenerator(){
+
+    var options = generatePassword();
+    var passwordPool = [];
+
+ if (userChoices.specialCharacterChoice) {
+    for (i = 0; i < specialCharacters.length; ++i) {
+        passwordPool.push(specialCharacters[i]);
+    }
+  } 
+  if (userChoices.numberChoice) {
+    for (i = 0; i < numberOptions.length; ++i) {
+    passwordPool.push(numberOptions[i]);
+    }
+  }
+  if (userChoices.lowerCaseChoice) {
+    for (i = 0; i < lowerCase.length; ++i) {
+    passwordPool.push(lowerCase[i]);
+    }
+  }
+  if (userChoices.upperCaseChoice) {
+    for (i = 0; i < upperCase.length; ++i) {
+    passwordPool.push(upperCase[i]);
+    }
+  }
+
+  var chosenAnswers= [];
+
+  for (let i = 0; i < options.length; ++i) {
+      var randomPicker = Math.floor(Math.random() * Math.floor(passwordPool.length));
+       finalPassword.push(passwordPool[randomPicker])
+  }
+
+  console.log(finalPassword)
   return "this will be replaced by my generated password.";
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -43,12 +95,3 @@ generateBtn.addEventListener("click", writePassword);
 
 // when click on "generate password" prompts will appear
 
-// function generatePassword() {
-//   var length = 8,
-//       charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-//       retVal = "";
-//   for (var i = 0, n = charset.length; i < length; ++i) {
-//       retVal += charset.charAt(Math.floor(Math.random() * n));
-//   }
-//   return retVal;
-// }
