@@ -42,7 +42,7 @@ __
 
 Below are photos of the completed password generator:
 
-![passwordGenerator](password-generator-/password-generator.png)
+![passwordGenerator](password-generator.png)
 
 
 Credits

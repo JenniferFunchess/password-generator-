@@ -56,22 +56,22 @@ function generatePassword(){
     var options = generatePassword();
     var passwordPool = [];
 
- if (userChoices.specialCharacterChoice) {
+ if (options.specialCharacterChoice) {
     for (i = 0; i < specialCharacters.length; ++i) {
         passwordPool.push(specialCharacters[i]);
     }
   } 
-  if (userChoices.numberChoice) {
+  if (options.numberChoice) {
     for (i = 0; i < numberOptions.length; ++i) {
     passwordPool.push(numberOptions[i]);
     }
   }
-  if (userChoices.lowerCaseChoice) {
+  if (options.lowerCaseChoice) {
     for (i = 0; i < lowerCase.length; ++i) {
     passwordPool.push(lowerCase[i]);
     }
   }
-  if (userChoices.upperCaseChoice) {
+  if (options.upperCaseChoice) {
     for (i = 0; i < upperCase.length; ++i) {
     passwordPool.push(upperCase[i]);
     }
@@ -84,9 +84,13 @@ function generatePassword(){
        chosenAnswers.push(passwordPool[randomPicker])
   }
 
-  console.log(finalPassword)
-  return "this will be replaced by my generated password.";
-}
+  console.log(chosenAnswers)
+
+  var finalAnswer = chosenAnswers.join('');
+  console.log(finalAnswer)
+  
+  document.getElementById("generate").textContent = finalAnswer;
+};
 
 
 // Add event listener to generate button
