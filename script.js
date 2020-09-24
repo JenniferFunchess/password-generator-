@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
+// Below are the 4 different array options for the password
 var upperCase = [
   "A",
   "B",
@@ -83,12 +83,14 @@ function writePassword() {
 }
 
 function generatePassword() {
+  // below are all of the questions and prompts to ask the user
   var userApproval = confirm("Please confirm the criteria for this password");
   var characterLength = parseInt(
     prompt("How long would you like your password to be?")
   );
   console.log("Chosen character length: " + characterLength);
 
+  // condition to make sure characters are between 8 and 128
   if (characterLength < 8) {
     alert("Needs to be 8 or more characters!");
     return;
@@ -127,6 +129,7 @@ function generatePassword() {
     return;
   }
 
+  // below is the object for user answers
   var userChoices = {
     lengthChoice: characterLength,
     specialCharacterChoice: userSpecialCharacter,
@@ -138,10 +141,12 @@ function generatePassword() {
   return userChoices;
 }
 
+// this function is to take the previous information into the random generator
 function randomGenerator() {
   var options = generatePassword();
   var passwordPool = [];
 
+  // below is pulling all chosen options into the empty arrary
   if (options.specialCharacterChoice) {
     passwordPool = passwordPool.concat(specialCharacters);
   }
@@ -158,6 +163,7 @@ function randomGenerator() {
 
   var chosenAnswers = [];
 
+  // random generator formula for the new array
   for (let i = 0; i < options.lengthChoice; ++i) {
     var randomPicker = Math.floor(
       Math.random() * Math.floor(passwordPool.length)
@@ -167,6 +173,7 @@ function randomGenerator() {
 
   console.log(chosenAnswers);
 
+  // this is where it states the new password on the webpage
   var password = chosenAnswers.join("");
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
